@@ -47,7 +47,7 @@ Public Class ScriptProcessor
         Dim iParam1Pos As Integer ', iParam2Pos As Integer
         Dim iQuotePos As Integer, iCommaPos As Integer
         Dim sOperator As String, iOperatorPos As Integer, lSeconds As ULong
-        Dim sValue, sState, sContainer As String
+        Dim sValue, sState As String
         Dim sConditionResults As String = ""
         Dim dtStartTime As Date, dtEndTime As Date
         Dim sWorking As String, sProperty As String = "", pProperty As New OSAEObjectProperty
