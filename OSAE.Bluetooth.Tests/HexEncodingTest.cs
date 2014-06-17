@@ -68,14 +68,16 @@ namespace OSAE.Bluetooth.Tests
         ///A test for GetByteCount
         ///</summary>
         [TestMethod()]
-        public void GetByteCountTest()
+        public void GetByteCountWithValidHexStringTest()
         {
-            string hexString = string.Empty; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            actual = HexEncoding.GetByteCount(hexString);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            string[] hexString = new string[5] {"", "a","00","011","013235"};
+            int[] expected = new int[5] {0,0,1,1,3};
+
+            for (int c = 0; c < hexString.Length; c++)
+            {
+		        int actual = HexEncoding.GetByteCount(hexString[c]);
+                Assert.AreEqual(expected[c],actual, "The hexString : " + hexString[c] + " should give a ByteCount of : " + expected[c]);
+	        }
         }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace OSAE.Bluetooth.Tests
         public void HexEncodingConstructorTest()
         {
             HexEncoding target = new HexEncoding();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            Assert.IsNotNull(target, "HexEncoding initialisation succeed");
         }
 
         /// <summary>
@@ -132,17 +134,37 @@ namespace OSAE.Bluetooth.Tests
         }
 
         /// <summary>
-        ///A test for IsHexDigit
+        ///A test for IsHexDigit with good values
+        ///should return true
         ///</summary>
         [TestMethod()]
-        public void IsHexDigitTest()
+        public void IsHexDigitGoodValuesTest()
         {
-            char c = '\0'; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = HexEncoding.IsHexDigit(c);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            char[] c = new char[22] {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','A','B','C','D','E','F'};
+            bool expected = true;
+            foreach (var item in c)
+            {
+                bool actual;
+                actual = HexEncoding.IsHexDigit(item);
+                Assert.AreEqual(expected, actual, item + " : is HEX digit");
+            }
+        }
+
+        /// <summary>
+        ///A test for IsHexDigit with bad values
+        ///should return false
+        ///</summary>
+        [TestMethod()]
+        public void IsHexDigitBadValuesTest()
+        {
+            char[] c = new char[9] { 'g', 'G', '-', '_', '^', '?', '&', 'q', 'z'};
+            bool expected = false;
+            foreach (var item in c)
+            {
+                bool actual;
+                actual = HexEncoding.IsHexDigit(item);
+                Assert.AreEqual(expected, actual, item + " : is not an HEX digit");
+            }
         }
 
         /// <summary>
