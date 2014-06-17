@@ -1,9 +1,9 @@
 ﻿namespace OSAE.Enums
 {
     /// <summary>
-    /// Days of week...
+    /// Days of week... Unused now: We should use System.DayOfWeek
     /// </summary>
-    public enum DaysOfWeek
+    /*public enum DaysOfWeek
     {
         Sunday = 1,
         Monday = 2,
@@ -12,5 +12,5 @@
         Thursday = 5,
         Friday = 6,
         Saturday = 7
-    }
+    }*/
 }
