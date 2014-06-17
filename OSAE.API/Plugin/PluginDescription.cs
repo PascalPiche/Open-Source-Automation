@@ -4,6 +4,7 @@
     using System.IO;
     using System.Xml;
 
+    
     public class PluginDescription
     {
         /// <summary>
@@ -55,12 +56,12 @@
         }
 
         /// <summary>
-        /// The version of the plgun
+        /// The version of the plugin
         /// </summary>
         private string _pluginVersion;
 
         /// <summary>
-        /// Gets or sets the author of the plgin
+        /// Gets or sets the author of the plugin
         /// </summary>
         public string Version
         {
@@ -349,7 +350,7 @@
         /// </summary>
         /// <param name="filename">The file to read the content from</param>
         /// <returns>The content that was read from the file</returns>
-        static string ReadFromFile(string filename)
+        private static string ReadFromFile(string filename)
         {
             string S = string.Empty;
 
