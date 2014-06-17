@@ -41,3 +41,6 @@ output/
 *.PDF  diff=astextplain
 *.rtf  diff=astextplain
 *.RTF  diff=astextplain
+
+/testimpactdata.sdf
+/TestResults
